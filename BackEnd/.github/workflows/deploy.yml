@@ -1,0 +1,35 @@
+name: 🚀 Deploy Django Code to Server
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Setup SSH
+      uses: webfactory/ssh-agent@v0.9.0
+      with:
+        ssh-private-key: ${{ secrets.DEPLOY_KEY }}
+
+    - name: Deploy to Server via SSH
+      env:
+        GIT_TOKEN: ${{ secrets.GH_TOKEN }}
+      run: |
+        ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
+          set -x  # 显示每条执行的命令（调试用）
+
+          echo "👤 当前用户: \$(whoami)"
+          echo "📍 git 路径: \$(which git)"
+          echo "🕒 当前时间: \$(date)"
+          echo "🔑 token 前缀: \${GIT_TOKEN:0:6}..."  # 避免显示完整 token
+
+          export GIT_TOKEN="${GIT_TOKEN}"
+          bash /www/wwwroot/MiniSemester/backend/deploy.sh
+        EOF

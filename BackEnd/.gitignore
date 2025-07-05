@@ -1,0 +1,86 @@
+# Python 缓存文件
+__pycache__/
+*.py[cod]
+*$py.class
+
+# 编译器或IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# 虚拟环境
+env/
+venv/
+ENV/
+VENV/
+.env
+.venv
+
+# 安装包
+*.egg
+*.egg-info/
+dist/
+build/
+*.whl
+
+# Pip 缓存
+pip-wheel-metadata/
+pip-log.txt
+
+# Django 本地数据库和迁移缓存
+*.sqlite3
+db.sqlite3
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
+
+# Django 迁移记录（视情况）
+*/migrations/__pycache__/
+*/migrations/*.pyc
+*/migrations/*.pyo
+*/migrations/*.pyd
+# */migrations/*
+# !*/migrations/__init__.py
+
+
+# Media 和静态文件
+/media/
+media/
+staticfiles/
+static/
+
+# 环境变量和密钥
+.env
+.env.*
+
+# Jupyter Notebook 检查点
+.ipynb_checkpoints
+
+# macOS 系统文件
+.DS_Store
+
+# Coverage 文件
+htmlcov/
+.coverage
+.tox/
+.nox/
+.cache/
+.pytest_cache/
+
+# Test 输出
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+
+# docker 忽略项（如果使用）
+docker-compose.override.yml
+
+# mypy 类型检查
+.mypy_cache/
+
+# VS Code 设置（可选保留）
+.settings/
